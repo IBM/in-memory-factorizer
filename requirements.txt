@@ -1,0 +1,8 @@
+tqdm
+matplotlib
+tensorboard
+dotmap
+progressbar
+scikit-learn
+gdown
+

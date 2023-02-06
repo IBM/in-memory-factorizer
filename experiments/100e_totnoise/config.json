@@ -1,0 +1,146 @@
+{
+    "id": "noise",
+    "savedir": "",
+    "useCuda": true,
+    "saveResonator": false,
+    "arch": "densebipolarbatched",
+    "decoding": "sequential",
+    "activation": "topaPT",
+    "permutation": true,
+    "topa": 7,
+    "hermes_convergenceDetectionThreshold": 0.6,
+    "hermes_activationThreshold": 0.1495,
+    "activationThreshold": 0.136,
+    "noisyAttn": true,
+    "noisyAttnType": "pcm",
+    "time_for_hermes_iter": 256,
+    "rd_noise_mu": -0.00253,
+    "neu_mean": 0.042881,
+    "G0_mu": 25.87082,
+    "G0_noise_source_same": true,
+    "G0_noise_mu": 0.89666,
+    "G0_mu_spatial": 22.696983,
+    "noisyAttnStd": null,
+    "total_noise": [
+        [
+            0,
+            0,
+            0
+        ],
+        [
+            0.02327,
+            0.20446,
+            0.00907
+        ],
+        [
+            0.04654,
+            0.40893,
+            0.01814
+        ],
+        [
+            0.06981,
+            0.61339,
+            0.02721
+        ],
+        [
+            0.09308,
+            0.81786,
+            0.03628
+        ],
+        [
+            0.11635,
+            1.02232,
+            0.04535
+        ],
+        [
+            0.13962,
+            1.22679,
+            0.05442
+        ],
+        [
+            0.16289,
+            1.43125,
+            0.06349
+        ],
+        [
+            0.18616,
+            1.63572,
+            0.07256
+        ],
+        [
+            0.20943,
+            1.84018,
+            0.08163
+        ],
+        [
+            0.2327,
+            2.04465,
+            0.0907
+        ],
+        [
+            0.25597,
+            2.24911,
+            0.09977
+        ],
+        [
+            0.27924,
+            2.45358,
+            0.10884
+        ],
+        [
+            0.30251,
+            2.65804,
+            0.11791
+        ],
+        [
+            0.32578,
+            2.86251,
+            0.12698
+        ],
+        [
+            0.34905,
+            3.06697,
+            0.13605
+        ],
+        [
+            0.37232,
+            3.27144,
+            0.14512
+        ],
+        [
+            0.39559,
+            3.4759,
+            0.15419
+        ],
+        [
+            0.41886,
+            3.68037,
+            0.16326
+        ],
+        [
+            0.44213,
+            3.8848,
+            0.1723
+        ]
+    ],
+    "iter": {
+        "max": 21845,
+        "fac": 0.001
+    },
+    "ntrial": 1000,
+    "batchsize": 100,
+    "d": 256,
+    "num_factors": 3,
+    "M": {
+        "fixed": 256,
+        "log_start": 4,
+        "log_stop": 8,
+        "nDecade": 1
+    },
+    "save_sim": false,
+    "symmetricIM": false,
+    "simcomp": "op",
+    "runResonator": true,
+    "seed": 40,
+    "running": true
+}

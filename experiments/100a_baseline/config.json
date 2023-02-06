@@ -1,0 +1,35 @@
+{
+    "id": "baseline",
+    "savedir": "",
+    "saveResonator": false,
+    "useCuda": true,
+    "arch": "densebipolarbatched",
+    "decoding": "sequential",
+    "activation": "identity",
+    "permutation": true,
+    "topa": 0,
+    "pullUp": false,
+    "activationThreshold": 0,
+    "noisyAttn": false,
+    "noisyAttnStd": null,
+    "iter": {
+        "max": null,
+        "fac": 1
+    },
+    "ntrial": 1024,
+    "batchsize": 512,
+    "d": 256,
+    "num_factors": 3,
+    "M": {
+        "fixed": 256,
+        "log_start": 4,
+        "log_stop": 10,
+        "nDecade": 3
+    },
+    "save_sim": false,
+    "simcomp": "op",
+    "runResonator": true,
+    "seed": 40,
+    "accuracy": 1,
+    "running": true
+}
