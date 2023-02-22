@@ -1,4 +1,4 @@
-# In-memory factorizer
+# In-memory factorization
 This is the repository for the code associated with the paper titled "In-memory factorization of holographic perceptual representations"
 
 Authors: Michael Hersche <her@zurich.ibm.com>, Geethan Karunaratne <kar@zurich.ibm.com>
