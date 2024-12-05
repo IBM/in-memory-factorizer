@@ -1,5 +1,5 @@
 # Factorizer library
-This is repository contains a series of factorizers: 
+This repository contains a series of factorizers: 
 1. In-memory factorizer presented in Nature Nanotechnology: [In-memory factorization of holographic perceptual representations](https://www.nature.com/articles/s41565-023-01357-8)
 2. Block codes factorizer presented in Neurosymbolic Artificial Intelligence: [Factorizers for distributed sparse block codes](https://content.iospress.com/download/neurosymbolic-artificial-intelligence/nai240713?id=neurosymbolic-artificial-intelligence%2Fnai240713)
 3. Asymmetric factorizer presented at MLNCP workshop at NeurIPS 2024: [On the Role of Noise in Factorizers for Disentangling Distributed Representations](https://openreview.net/forum?id=VYryqVqQEF)
