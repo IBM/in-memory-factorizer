@@ -1,0 +1,31 @@
+{
+    "id": "blockcodefactorizer",
+    "save_sim": false,
+    "savedir": "",
+    "useCuda": true,
+    "arch": "blockcodefactorizer",
+    "decoding": "sequential",
+    "permutation": false,
+    "B": 4,
+    "D": 512,
+    "num_factors": 2,
+    "convergenceDetectionThreshold": 0.9,
+    "M": {
+        "fixed": 1155,
+        "log_start": 3,
+        "log_stop": 8,
+        "nDecade": 5
+    },
+    "similarity": "inf",
+    "threshold": 0.0076,
+    "A": 238,
+    "iter": {
+        "max": -1,
+        "fac": 1
+    },
+    "ntrial": 256,
+    "batchsize": 256,
+    "topaPU": true,
+    "seed": 0,
+    "running": true
+}

@@ -7,7 +7,6 @@ import argparse
 import numpy as np
 import os,time
 from tqdm import tqdm
-import pdb
 import json
 import sys
 import torch as t
@@ -18,6 +17,7 @@ import pickle
 import time
 
 from models.densebipolarbatched import densebipolarbatched
+from models.blockcodefactorizer import blockcodefactorizer
 
 
 
@@ -123,9 +123,8 @@ for args in experiments:
 
     for idx,M in enumerate(M_vec):
         max_iter = int((M**(args.num_factors - 1)) / args.num_factors * args.iter.fac) if (args.iter.max==-1 or args.iter.max==None) else args.iter.max
-        # max_iter = max(2000, int(args.iter.fac*(M**args.num_factors))) if (args.iter.max==-1 or args.iter.max==None) else args.iter.max
+
         print("Search space: {}, max iterations: {}".format(M**args.num_factors, max_iter))
-        
         
         if argsCLI.r:
             args.id = argsCLI.r
@@ -136,10 +135,11 @@ for args in experiments:
                 seq_dec = True
                 if args.decoding == "parallel":
                     seq_dec = False
-                factor_code = densebipolarbatched(args.d, args.num_factors, M, decodingSequential=seq_dec, **args) # args.d, args.num_factors, decodingSequential=seq_dec
-
+                factor_code = densebipolarbatched(args.d, args.num_factors, M, decodingSequential=seq_dec, **args) 
+            elif args.arch=="blockcodefactorizer": 
+                factor_code = blockcodefactorizer(F=args.num_factors, Mx=M, **args)
             else:
-                raise ValueError(f"Nonvalid arch, got {args.arch}")
+                raise ValueError(f"Invalid arch, got {args.arch}")
 
 
         idx_errors_tot = 0  

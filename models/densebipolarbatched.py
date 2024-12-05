@@ -70,6 +70,7 @@ class densebipolarbatched:
                  IMclassification=False,
                  simcomp = "op",
                  permutation = True,
+                 assymetric_init = False,
                  accuracy = 1,
                  im_sampling = "Bernoulli",
                  savedir = "~/",
@@ -132,8 +133,9 @@ class densebipolarbatched:
         self._noisyAttnStd = noisyAttnStd
         self._accuracy = accuracy
         self._savedir = savedir
-        self._im_sampling = im_sampling,
-        self._IMclassification = IMclassification,
+        self._im_sampling = im_sampling
+        self._IMclassification = IMclassification
+        self._assymetric_init = assymetric_init
         self._activationName = activation
         if self._noisyAttnType == "pcm":
             if self._G0_noise_source_same:
@@ -275,6 +277,38 @@ class densebipolarbatched:
 
         # Normally, reconstruction matrix and IM are the same
         self._reconstruction = self._IM.clone()
+        if self._assymetric_init:
+            if self._permutation:
+                #randomly select x indices in self._IM tensor
+                perm = t.randperm(self._IM[0].size(0)*self._IM[0].size(1))
+                perm = perm[:int(self.G0_noise_std_rel * self._IM[0].size(0) * self._IM[0].size(1))]
+                self._IM[0].view(-1)[perm] = 1-self._IM[0].view(-1)[perm]
+                # premute factor 0 to retrieve factors 1..V
+                for f in range(self._F):
+                    self._IM[f] = t.roll(self._IM[0].detach(), f, 1)
+            else:
+                #if no permutation, bit flips are independent
+                for f in range(self._F):
+                    perm = t.randperm(self._IM[0].size(0) * self._IM[0].size(1))
+                    perm = perm[:int(self.G0_noise_std_rel * self._IM[0].size(0) * self._IM[0].size(1))]
+                    self._IM[f].view(-1)[perm] = 1 - self._IM[f].view(-1)[perm]
+
+            if self._G0_noise_source_same is False: #if same noise source false, add bit flips to bwd pass as well
+                if self._permutation:
+                    # randomly select x indices in self._reconstruction tensor
+                    perm = t.randperm(self._IM[0].size(0) * self._IM[0].size(1))
+                    perm = perm[:int(self.G0_noise_std_rel * self._IM[0].size(0) * self._IM[0].size(1))]
+                    self._reconstruction[0].view(-1)[perm] = 1 - self._reconstruction[0].view(-1)[perm]
+                    # premute factor 0 to retrieve factors 1..V
+                    for f in range(self._F):
+                        self._reconstruction[f] = t.roll(self._reconstruction[0].detach(), f, 1)
+                else:
+                    # if no permutation, bit flips are independent
+                    for f in range(self._F):
+                        perm = t.randperm(self._IM[0].size(0) * self._IM[0].size(1))
+                        perm = perm[:int(self.G0_noise_std_rel * self._IM[0].size(0) * self._IM[0].size(1))]
+                        self._reconstruction[f].view(-1)[perm] = 1 - self._reconstruction[f].view(-1)[perm]
+
 
     def encode(self,u):
         """

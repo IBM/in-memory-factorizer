@@ -1,0 +1,36 @@
+{
+    "id": "assym_cb",
+    "savedir": "",
+    "useCuda": true,
+    "arch": "densebipolarbatched",
+    "decoding": "sequential",
+    "activation": "topaPT",
+    "permutation": true,
+    "assymetric_init": true,
+    "topa": 7,
+    "activationThreshold": 0.0,
+    "im_sampling": "ExactDense",
+    "noisyAttn": false,
+    "G0_noise_source_same": true,
+    "G0_noise_std_rel": 0.1,
+    "noisyAttnStd": null,
+    "iter": {
+        "max": null,
+        "fac": 1
+    },
+    "ntrial": 5120,
+    "batchsize": 512,
+    "d": 1000,
+    "num_factors": 2,
+    "M": {
+        "fixed": 681,
+        "log_start": 1,
+        "log_stop": 10,
+        "nDecade": 3
+    },
+    "save_sim": false,
+    "simcomp": "op",
+    "seed": 40,
+    "accuracy": 1,
+    "running": true
+}
